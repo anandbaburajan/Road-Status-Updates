@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+    window.onload=function(){
+      
+var dataTo = document.getElementById('to');
+var inputTo = document.getElementById('ajax-to');
+var dataFrom = document.getElementById('from');
+var inputFrom = document.getElementById('ajax-from');
+
+var requestTo = new XMLHttpRequest();
+var requestFrom = new XMLHttpRequest();
+
+requestTo.onreadystatechange = function (response) {
+    if (requestTo.readyState === 4) {
+        if (requestTo.status === 200) {
+            var jsonOptionsTo = JSON.parse(requestTo.responseText);
+            jsonOptionsTo.forEach(function (item) {
+                var optionTo = document.createElement('option');
+                optionTo.value = item;
+                dataTo.appendChild(optionTo);
+            });
+
+            inputTo.placeholder = "To";
+        } else {
+            inputTo.placeholder = "Couldn't load places";
+        }
+    }
+};
+
+requestFrom.onreadystatechange = function (response) {
+    if (requestFrom.readyState === 4) {
+        if (requestFrom.status === 200) {
+            var jsonOptionsFrom = JSON.parse(requestFrom.responseText);
+            jsonOptionsFrom.forEach(function (item) {
+                var optionFrom = document.createElement('option');
+                optionFrom.value = item;
+                dataFrom.appendChild(optionFrom);
+            });
+
+            inputFrom.placeholder = "From";
+        } else {
+            inputFrom.placeholder = "Couldn't load places";
+        }
+    }
+};
+
+inputTo.placeholder = "Loading places...";
+
+requestTo.open('GET', 'https://www.gizmolead.com/keralaroutes/places.json', true);
+requestTo.send();
+
+inputFrom.placeholder = "Loading places...";
+
+requestFrom.open('GET', 'https://www.gizmolead.com/keralaroutes/places.json', true);
+requestFrom.send();
+    }
+    
+</script>
+</head>
+<body>
+<form name="update" method="POST" action="https://www.gizmolead.com/keralaroutes/update.php">
+    <p>Select a route to update:</p>
+    <input type="text" id="ajax-to" name="to" list="to" placeholder="To">
+    <datalist id="to"></datalist>
+    <input type="text" id="ajax-from" name="from" list="from" placeholder="From">
+    <datalist id="from"></datalist>
+    Status:
+    <select name="status">
+    <option value="Okay">Okay</option>
+    <option value="Not Okay">Not Okay</option>
+    </select>
+    As of: <input type="datetime-local" id="myDatetimeField1" name="datetime">
+    <input type="text" name="remarks" placeholder="Remarks">
+    <input type="submit" value="Update">
+</form>
+
+
+<form name="add" method="POST" action="https://www.gizmolead.com/keralaroutes/add.php">
+    <p>Places not in the list? Add a new route:</p>
+    <input type="text" name="to_1" placeholder="To">
+    <input type="text" name="from_1" placeholder="From">
+    Status:
+    <select name="status_1">
+    <option value="Okay">Okay</option>
+    <option value="Not Okay">Not Okay</option>
+    </select>
+    As of: <input type="datetime-local" id="myDatetimeField2" name="datetime_1">
+    <input type="text" name="remarks_1" placeholder="Remarks">
+    <input type="submit" value="Update">
+</form>
+    
+<br>
+<a href="https://www.gizmolead.com/keralaroutes/">Check another route</a>
+<br><a href="https://www.gizmolead.com/keralaroutes/affected.php">List of affected routes</a>
+</body>
+</html>
