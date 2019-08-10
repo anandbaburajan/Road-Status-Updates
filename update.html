@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
     window.onload=function(){
@@ -61,39 +64,65 @@ requestFrom.send();
 </script>
 </head>
 <body>
+<div class="container" style="margin-bottom:20px;margin-top:20px;">
 <form name="update" method="POST" action="https://www.gizmolead.com/keralaroutes/update.php">
-    <p>Select a route to update:</p>
-    <input type="text" id="ajax-to" name="to" list="to" placeholder="To">
+    <h4>Select a route to update:</h4>
+    <div class="form-group">
+    <input class="form-control" type="text" id="ajax-to" name="to" list="to" placeholder="To">
     <datalist id="to"></datalist>
-    <input type="text" id="ajax-from" name="from" list="from" placeholder="From">
+    </div>
+    <div class="form-group">
+    <input class="form-control" type="text" id="ajax-from" name="from" list="from" placeholder="From">
     <datalist id="from"></datalist>
+    </div>
+    <div class="form-group">
     Status:
-    <select name="status">
+    <select class="custom-select" name="status">
     <option value="Okay">Okay</option>
     <option value="Not Okay">Not Okay</option>
     </select>
-    As of: <input type="datetime-local" id="myDatetimeField1" name="datetime">
-    <input type="text" name="remarks" placeholder="Remarks">
-    <input type="submit" value="Update">
+    </div>
+    <div class="form-group">
+    As of: <input class="form-control" type="datetime-local" id="myDatetimeField1" name="datetime">
+    </div>
+    <div class="form-group">
+    <input class="form-control" type="text" name="remarks" placeholder="Remarks">
+    </div>
+    <button type="submit" class="btn btn-default">Update</button>
 </form>
 
+<hr style="border-top: 3px dashed #7C7A7C;">
 
 <form name="add" method="POST" action="https://www.gizmolead.com/keralaroutes/add.php">
-    <p>Places not in the list? Add a new route:</p>
-    <input type="text" name="to_1" placeholder="To">
-    <input type="text" name="from_1" placeholder="From">
+    <h4>Places not in the list? Add a new route:</h4>
+    <div class="form-group">
+    <input class="form-control" type="text" name="to_1" placeholder="To">
+    </div>
+    <div class="form-group">
+    <input class="form-control" type="text" name="from_1" placeholder="From">
+    </div>
+    <div class="form-group">
     Status:
-    <select name="status_1">
+    <select class="custom-select" name="status_1">
     <option value="Okay">Okay</option>
     <option value="Not Okay">Not Okay</option>
     </select>
-    As of: <input type="datetime-local" id="myDatetimeField2" name="datetime_1">
-    <input type="text" name="remarks_1" placeholder="Remarks">
-    <input type="submit" value="Update">
+    </div>
+    <div class="form-group">
+    As of: <input class="form-control" type="datetime-local" id="myDatetimeField2" name="datetime_1">
+    </div>
+    <div class="form-group">
+    <input class="form-control" type="text" name="remarks_1" placeholder="Remarks">
+    </div>
+    <button type="submit" class="btn btn-default">Update</button>
 </form>
-    
-<br>
-<a href="https://www.gizmolead.com/keralaroutes/">Check another route</a>
-<br><a href="https://www.gizmolead.com/keralaroutes/affected.php">List of affected routes</a>
+
+<hr style="border-top: 3px dashed #7C7A7C;">
+
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/"><button type="button" class="btn btn-primary">Check another route</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/affected.php"><button type="button" class="btn btn-info">List of affected routes</button></a>
+</div>
 </body>
 </html>
