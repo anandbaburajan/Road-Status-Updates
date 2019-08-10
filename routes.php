@@ -37,7 +37,7 @@ file_put_contents('routes.json', $newJsonString);
 <h2><?php echo $to . " - " . $from. " route" ?></h2>
 <br>
 <h4>Status: <b><?php echo $status; ?></b></h4>
-<h4>As of: <b><?php echo $asof[1]." ".$asof[0]; ?></b></h4>
+<h4>As of: <b><?php if($i=='1'){ echo $asof[1]." ".$asof[0];} else { echo "Unknown"; }?></b></h4>
 <h4>Remarks: <b><?php echo $remarks; ?></b></h4>
 
 <br><br>
