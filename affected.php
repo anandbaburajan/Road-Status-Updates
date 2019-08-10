@@ -1,9 +1,9 @@
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    </head>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 <body>
 <div class="container">
 <h2>List of affected routes:</h2>
@@ -11,10 +11,12 @@
 
 $jsonString = file_get_contents('routes.json');
 $data = json_decode($jsonString, true);
+$dt = "";
 foreach ($data as $route) {
     if($route['status'] == "Not Okay")
     {
-        echo "<br><h4>" . $route['to'] . " - " . $route['from'] . " route is not okay as of " . $route['asof']."</h4>";
+        $dt=explode("T",$route['asof']);
+        echo "<br><h4>" . $route['to'] . " - " . $route['from'] . " route is not okay as of " . $dt[1]. "  " . $dt[0] ."</h4>";
     }
 }
 $newJsonString = json_encode($data);
