@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+    window.onload=function(){
+      
+var dataTo = document.getElementById('to');
+var inputTo = document.getElementById('ajax-to');
+var dataFrom = document.getElementById('from');
+var inputFrom = document.getElementById('ajax-from');
+
+var requestTo = new XMLHttpRequest();
+var requestFrom = new XMLHttpRequest();
+
+requestTo.onreadystatechange = function (response) {
+    if (requestTo.readyState === 4) {
+        if (requestTo.status === 200) {
+            var jsonOptionsTo = JSON.parse(requestTo.responseText);
+            jsonOptionsTo.forEach(function (item) {
+                var optionTo = document.createElement('option');
+                optionTo.value = item;
+                dataTo.appendChild(optionTo);
+            });
+
+            inputTo.placeholder = "To";
+        } else {
+            inputTo.placeholder = "Couldn't load places";
+        }
+    }
+};
+
+requestFrom.onreadystatechange = function (response) {
+    if (requestFrom.readyState === 4) {
+        if (requestFrom.status === 200) {
+            var jsonOptionsFrom = JSON.parse(requestFrom.responseText);
+            jsonOptionsFrom.forEach(function (item) {
+                var optionFrom = document.createElement('option');
+                optionFrom.value = item;
+                dataFrom.appendChild(optionFrom);
+            });
+
+            inputFrom.placeholder = "From";
+        } else {
+            inputFrom.placeholder = "Couldn't load places";
+        }
+    }
+};
+
+inputTo.placeholder = "Loading places...";
+
+requestTo.open('GET', 'https://www.gizmolead.com/keralaroutes/places.json', true);
+requestTo.send();
+
+inputFrom.placeholder = "Loading places...";
+
+requestFrom.open('GET', 'https://www.gizmolead.com/keralaroutes/places.json', true);
+requestFrom.send();
+    }
+</script>
+</head>
+<body>
+<form name="check" method="POST" action="https://www.gizmolead.com/keralaroutes/routes.php">
+    <input type="text" id="ajax-to" name="to" list="to" placeholder="To">
+    <datalist id="to"></datalist>
+    <input type="text" id="ajax-from" name="from" list="from" placeholder="From">
+    <datalist id="from"></datalist>
+    <input type="submit" value="Check">
+</form>
+<br>
+<a href="https://www.gizmolead.com/keralaroutes/update.html">Update status of a bus route / Add a bus route</a>
+<br><a href="https://www.gizmolead.com/keralaroutes/affected.php">List of affected routes</a>
+</body>
+</html>
