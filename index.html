@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Route status for Kerala Floods</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
 <script type="text/javascript">
 
     window.onload=function(){
@@ -60,15 +65,23 @@ requestFrom.send();
 </script>
 </head>
 <body>
+<div class="container">
+<h2>Check status</h2>
 <form name="check" method="POST" action="https://www.gizmolead.com/keralaroutes/routes.php">
-    <input type="text" id="ajax-to" name="to" list="to" placeholder="To">
+    <div class="form-group">
+    <input class="form-control" type="text" id="ajax-to" name="to" list="to" placeholder="To">
     <datalist id="to"></datalist>
-    <input type="text" id="ajax-from" name="from" list="from" placeholder="From">
+    </div>
+    <div class="form-group">
+    <input class="form-control" type="text" id="ajax-from" name="from" list="from" placeholder="From">
     <datalist id="from"></datalist>
-    <input type="submit" value="Check">
+    </div>
+    <button type="submit" class="btn btn-default">Check</button>
 </form>
-<br>
-<a href="https://www.gizmolead.com/keralaroutes/update.html">Update status of a bus route / Add a bus route</a>
-<br><a href="https://www.gizmolead.com/keralaroutes/affected.php">List of affected routes</a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/update.html"><button type="button" class="btn btn-primary">Update status of a bus route / Add a bus route</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/affected.php"><button type="button" class="btn btn-info">List of affected routes</button></a>
+</div>
 </body>
 </html>
