@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Route status for Kerala Floods</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>Route status for Kerala Floods</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   
 <script type="text/javascript">
 
@@ -69,11 +69,11 @@ requestFrom.send();
 <h2>Check status</h2>
 <form name="check" method="POST" action="https://www.gizmolead.com/keralaroutes/routes.php">
     <div class="form-group">
-    <input class="form-control" type="text" id="ajax-to" name="to" list="to" placeholder="To">
+    <input class="form-control" type="text" id="ajax-to" name="to" list="to" placeholder="To" required>
     <datalist id="to"></datalist>
     </div>
     <div class="form-group">
-    <input class="form-control" type="text" id="ajax-from" name="from" list="from" placeholder="From">
+    <input class="form-control" type="text" id="ajax-from" name="from" list="from" placeholder="From" required>
     <datalist id="from"></datalist>
     </div>
     <button type="submit" class="btn btn-default">Check</button>
