@@ -5,7 +5,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container" style="margin-bottom:20px;margin-top:20px;">
 <?php
 
 $jsonString = file_get_contents('https://www.gizmolead.com/keralaroutes/enquiries.json');
