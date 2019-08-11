@@ -28,7 +28,44 @@ if($pre=='0'){
 $data[] = array('to'=>$to, 'from'=>$from, 'status'=>$status, 'asof'=>$asof, 'remarks'=>$remarks);
 $newJsonString = json_encode($data);
 file_put_contents('routes.json', $newJsonString);
+
+$places = file_get_contents('https://www.gizmolead.com/keralaroutes/places.json');
+$places_d = json_decode($places, true);
+if (in_array($to, $places_d) == FALSE) {
+$places_d[] = $to;
 }
+$newJsonString1 = json_encode($places_d);
+file_put_contents('places.json', $newJsonString1);
+
+$places1 = file_get_contents('https://www.gizmolead.com/keralaroutes/places.json');
+$places1_d = json_decode($places1, true);
+if (in_array($from, $places1_d) == FALSE) {
+$places1_d[] = $from;
+}
+$newJsonString2 = json_encode($places1_d);
+file_put_contents('places.json', $newJsonString2);
+
+}
+
+$en_flag='0';
+$enq = file_get_contents('https://www.gizmolead.com/keralaroutes/enquiries.json');
+$enq_d = json_decode($enq, true);
+$arr_index = array();
+foreach ($enq_d as $key => $route) {
+    if((($to == $route['to']) && ($from == $route['from'])) || (($to == $route['from']) && ($from == $route['to'])))
+    {   $en_flag='1';
+        $arr_index[] = $key;
+    }
+}
+if($en_flag=='1')
+{
+foreach ($arr_index as $i)
+{
+    unset($enq_d[$i]);
+}
+$enq_d = array_values($enq_d);
+}
+file_put_contents('enquiries.json', json_encode($enq_d));
 
 $dt= explode("T",$asof);
 
@@ -43,7 +80,13 @@ $dt= explode("T",$asof);
 <br><br>
 <a href="https://www.gizmolead.com/keralaroutes/update.html"><button type="button" class="btn btn-primary">Update another route</button></a>
 <br><br>
-<a href="https://www.gizmolead.com/keralaroutes/"><button type="button" class="btn btn-info">Check a route</button></a>
+<a href="https://www.gizmolead.com/keralaroutes/"><button type="button" class="btn btn-secondary">Check a route</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/enquiries.php"><button type="button" class="btn btn-warning">Check latest enquiries</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/enquire.html"><button type="button" class="btn btn-info">Make an enquiry</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/affected.php"><button type="button" class="btn btn-danger">List of affected routes</button></a>
 </div>
 </body>
 </html>

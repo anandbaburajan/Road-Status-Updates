@@ -41,9 +41,15 @@ file_put_contents('routes.json', $newJsonString);
 <h4>Remarks: <b><?php echo $remarks; ?></b></h4>
 
 <br><br>
-<a href="https://www.gizmolead.com/keralaroutes/update.html"><button type="button" class="btn btn-primary">Update status of a bus route / Add a bus route</button></a>
+<a href="https://www.gizmolead.com/keralaroutes/"><button type="button" class="btn btn-secondary">Check another route</button></a>
 <br><br>
-<a href="https://www.gizmolead.com/keralaroutes/"><button type="button" class="btn btn-info">Check another route</button></a>
+<a href="https://www.gizmolead.com/keralaroutes/update.html"><button type="button" class="btn btn-primary">Update status of a route / Add a route</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/enquiries.php"><button type="button" class="btn btn-warning">Check latest enquiries</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/enquire.html"><button type="button" class="btn btn-info">Make an enquiry</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/affected.php"><button type="button" class="btn btn-danger">List of affected routes</button></a>
 </div>
 </body>
 </html>
