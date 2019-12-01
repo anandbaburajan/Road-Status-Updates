@@ -5,3 +5,5 @@ A tool to check whether bus routes are okay or not during the Kerala Floods. It 
 
 People with information can answer the enquiries and update the status of the routes along with the date/time and remarks. A quick overview of affected routes is also provided.
 
+![Screenshots](https://raw.githubusercontent.com/AnandBaburajan/Route-Status-for-Kerala-Floods/master/app/screenshots.png)
+
