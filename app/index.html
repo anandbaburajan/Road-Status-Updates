@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Route status for Kerala Floods</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    window.onload=function(){
+
+var dataTo = document.getElementById('to');
+var inputTo = document.getElementById('ajax-to');
+var dataFrom = document.getElementById('from');
+var inputFrom = document.getElementById('ajax-from');
+
+var requestTo = new XMLHttpRequest();
+var requestFrom = new XMLHttpRequest();
+
+requestTo.onreadystatechange = function (response) {
+    if (requestTo.readyState === 4) {
+        if (requestTo.status === 200) {
+            var jsonOptionsTo = JSON.parse(requestTo.responseText);
+            jsonOptionsTo.forEach(function (item) {
+                var optionTo = document.createElement('option');
+                optionTo.value = item;
+                dataTo.appendChild(optionTo);
+            });
+
+            inputTo.placeholder = "To";
+        } else {
+            inputTo.placeholder = "Couldn't load places";
+        }
+    }
+};
+
+requestFrom.onreadystatechange = function (response) {
+    if (requestFrom.readyState === 4) {
+        if (requestFrom.status === 200) {
+            var jsonOptionsFrom = JSON.parse(requestFrom.responseText);
+            jsonOptionsFrom.forEach(function (item) {
+                var optionFrom = document.createElement('option');
+                optionFrom.value = item;
+                dataFrom.appendChild(optionFrom);
+            });
+
+            inputFrom.placeholder = "From";
+        } else {
+            inputFrom.placeholder = "Couldn't load places";
+        }
+    }
+};
+
+inputTo.placeholder = "Loading places...";
+
+requestTo.open('GET', 'https://www.gizmolead.com/keralaroutes/places.json', true);
+requestTo.send();
+
+inputFrom.placeholder = "Loading places...";
+
+requestFrom.open('GET', 'https://www.gizmolead.com/keralaroutes/places.json', true);
+requestFrom.send();
+    }
+</script>
+</head>
+<body>
+<div class="container" style="margin-bottom:20px;margin-top:20px;">
+<h2>Check status</h2>
+<form name="check" method="POST" action="https://www.gizmolead.com/keralaroutes/routes.php">
+    <div class="form-group">
+    <input class="form-control" type="text" id="ajax-to" name="to" list="to" placeholder="To" required>
+    <datalist id="to"></datalist>
+    </div>
+    <div class="form-group">
+    <input class="form-control" type="text" id="ajax-from" name="from" list="from" placeholder="From" required>
+    <datalist id="from"></datalist>
+    </div>
+    <button type="submit" class="btn btn-default">Check</button>
+</form>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/update.html"><button type="button" class="btn btn-primary">Update status of a route / Add a route</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/enquiries.php"><button type="button" class="btn btn-secondary">Check latest enquiries</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/enquire.html"><button type="button" class="btn btn-info">Make an enquiry for a route</button></a>
+<br><br>
+<a href="https://www.gizmolead.com/keralaroutes/affected.php"><button type="button" class="btn btn-danger">List of affected routes</button></a>
+</div>
+</body>
+</html>
