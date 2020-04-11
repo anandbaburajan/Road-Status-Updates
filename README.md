@@ -5,5 +5,7 @@ A tool to check whether roads are okay or not during the Kerala Floods. It lets 
 
 People with information can answer the enquiries and update the status of the roads along with the date/time and remarks. A quick overview of affected roads is also provided.
 
+[(Feature Request) Check status of bus routes @IEEEKeralaSection/rescuekerala](https://github.com/IEEEKeralaSection/rescuekerala/issues/1071)
+
 ![Screenshots](https://raw.githubusercontent.com/AnandBaburajan/Road-Status-for-Kerala-Floods/master/app/demo.png)
 
